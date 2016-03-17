@@ -1,10 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
     <title>Connected</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
 </head>
 <body>
+<div class="container">
+    <h2>Cities of the world</h2>
 
+    <div class="table-responsive">
+        <form action="/addCity" method="post" class="form-inline">
+            <div class="form-group">
+                <label>Name: </label><input type="text" class="form-control" name="name" />
+            </div>
+            <div class="form-group">
+                <label>State: </label><input type="text" class="form-control" name="state" />
+            </div>
+            <div class="form-group">
+                <label>Country: </label><input type="text" class="form-control" name="country" />
+            </div>
+            <button type="submit" class="btn btn-default">Add</button>
+        </form>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>State</th>
+                <th>Country</th>
+            </tr>
+            </thead>
+            <tr th:each="city:${cities}">
+                <td><p th:text="${city.name}"/></td>
+                <td><p th:text="${city.state}"/></td>
+                <td><p th:text="${city.country}"/></td>
+            </tr>
+        </table>
+    </div>
+</div>
 </body>
 </html>
